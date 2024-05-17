@@ -3,7 +3,7 @@
 using namespace std;
 
 // adjacency matrix
-// undirected and unweighted graph
+// directed and unweighted graph
 
 int main(){
     int vertex,edges;
