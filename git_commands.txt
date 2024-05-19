@@ -36,3 +36,12 @@ git push -u origin master
 
 you can also use the -f flag to forcefully push it to master although not recommended for general use
 alternative is to use fetch, rebase and then merge and push.
+
+git remote -v 
+//used to show the url of the connected repo of your project
+
+git remote show origin
+//extension of above command and shows additional information regarding the repo that is connected with your project.
+
+git remote set-url <url>
+//used to set a new url/new repo to the current working project.
