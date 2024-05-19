@@ -1,0 +1,38 @@
+git branch -d <branch-name>  
+//forcefully deletes a branch locally as well as remotely using the -d flag.
+
+git init  
+// used initially to initialize/reinitialize a git repository.
+
+git add .  
+//used to stash/add all the files available in your directory to the staging area of git for committing at a later stage
+
+git checkout <branch-name>  
+//used to switch to a particular branch 
+
+git branch <branch-name>  (OR)   git checkout -b <branch-name>
+//used to create a new branch with the branch name   (OR)  used to create a new branch and switch to that newly created branch automatically in a single step.
+
+git branch 
+//used to view all the branches created in your directory/repository.
+
+git stash
+//used to temporarily save a data that is currently WIP and you may want to switch to another branch without commiting.
+
+git stash pop  (OR) git stash drop  (OR)  git stash clear etc
+// used to reapply changes back in the working branch or to permanently delete the stashed items.
+
+git merge <branched-branch-name>
+//used to merge a particular branch back to the master/main/origin branch when you are done with working on new changes.
+//also note that you should review both the branches manually to resolve a particular conflict to ensure that it is correctly merged.
+git merge <branched-branch-name> --squash
+// used to merge multiple commits from a feature branch into a single commit on the main branch, condensing the commit history and //simplifying the Git log. This command is particularly useful when you want to maintain a clean and concise history on the main branch by //combining all the changes from a feature branch into a single commit.
+
+git remote add origin <repo-link>
+//used to connect your working directly to the github repo.
+
+git push -u origin master
+//for pushing to repo.
+
+you can also use the -f flag to forcefully push it to master although not recommended for general use
+alternative is to use fetch, rebase and then merge and push.
