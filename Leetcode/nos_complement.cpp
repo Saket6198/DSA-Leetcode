@@ -42,7 +42,7 @@ public:
 };
 
 int main(){
-    Solution solution;ṭ
+    Solution solution;
     int num;
     cout<<"Enter no : ";
     cin>>num;
