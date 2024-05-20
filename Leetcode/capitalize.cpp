@@ -1,3 +1,6 @@
+// capitalize the input character
+
+
 #include<iostream>ss
 using namespace std;
 
