@@ -10,7 +10,7 @@ public:
         count += min(abs(A-8), abs(B-8));
         count += min(abs(A-1), abs(B-8));
         count += min(abs(A-1), abs(B-1));
-    return count;
+    return count;           
 
     }
 };
