@@ -29,20 +29,35 @@ int main(){
 
     a3.pop_back();  // Removes last element. This is a typical stack operation. It shrinks the %vector by one. 
     // Note that no data is returned, and if the last element's data is needed, it should be retrieved before pop_back() is called.
-    O(1);
+    // O(1);
 
     a4.clear(); // clears all value
 
     a3.erase(a3.begin() + 1); // O(n), after erasing all the elements in front are shifted one step back to occupy the erased elements position
 
-    cout<<a4.front(); // returns 1st
-    cout<<a4.back(); // returns last
-    cout<<a3.empty();  // returns 1 if begin and end point to thee sme.
-    cout<<a4.at(2); /* Provides access to the data contained in the %vector.
+    cout<<a2.front()<<endl; // returns 1st element
+    cout<<a2.back()<<endl; // returns last element
+    cout<<a3.empty()<<endl;  // returns 1 if begin and end iterator point to the same.
+    cout<<a2.at(2)<<endl; /* Provides access to the data contained in the %vector.
 
 Parameters:
-n – The index of the element for which data should be accessee
+n – The index of the element for which data should be accessed
 */
 
+
+/* Iterator in vector */
+
+vector<int>a5 = {4, 6, 8 ,10};
+a5.begin(); // Returns a read/write iterator that points to the first element in the %vector. Iteration is done in ordinary element order.
+
+a5.end(); // Returns a read/write iterator that points one past the last element in the %vector. Iteration is done in ordinary element order.
+
+for(auto it = a5.begin(); it != a5.end(); it++){
+    cout<<*it<<" ";
+}
+// OR
+for(int i=0; i<a5.size(); i++){
+    cout<<a5[i]<<" ";
+}
 
 }
