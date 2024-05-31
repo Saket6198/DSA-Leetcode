@@ -6,16 +6,26 @@ class Solution{
 public:
     void Selection_Sort(int arr[], int n){
         int i, j;
-        for(i=0; i<n; i++){
-            int index = i;
-            for(j=i+1; j<n; j++){
-                if(arr[j] > arr[index])
-                    index = j;
+    //     for(i=0; i<n; i++){
+    //         int index = i;
+    //         for(j=i+1; j<n; j++){
+    //             if(arr[j] > arr[index])
+    //                 index = j;
+    //         }
+    //         swap(arr[i], arr[index]);
+    //     }
+    // }
+            for(i=n-1; i>0; i--){
+                auto index = i;
+                for(j=i-1; j>=0; j--){
+                    if(arr[j] < arr[index]){
+                        index = j;
+                    }
+                }
+                swap(arr[index], arr[i]);
             }
-            swap(arr[i], arr[index]);
         }
-    }
-};
+    };
 
 void Print_array(int arr[], int n){
     for(int i=0; i<n; i++)
