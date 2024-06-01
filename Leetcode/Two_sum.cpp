@@ -52,7 +52,7 @@ public:
         sort(arr.begin(), arr.end());
         for(int i=0; i<arr.size(); i++){
             int x = target - arr[i].first;
-            int start = i + 1, end = arr.size() - 1, mid;
+            int start = i + 1, end = arr.size() - 1, mid; // start = i + 1 is done so that it does not account for repeated elements condition
             while(start<=end){
                 mid = start + ((end- start)/2);
                 if(arr[mid].first == x){
