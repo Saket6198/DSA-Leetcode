@@ -38,7 +38,7 @@ The tests are generated such that there is exactly one solution.
 
 */
 
-
+/* NOTE THAT *TWO POINTER* CAN ONLY BE IMPLEMENTED ON SORTED VECTORS/ARRAYS  */
 
 #include<iostream>
 #include<vector>
