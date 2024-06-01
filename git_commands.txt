@@ -45,3 +45,10 @@ git remote show origin
 
 git remote set-url <url>
 //used to set a new url/new repo to the current working project.
+
+git pull origin main
+// It is is used to update your current branch with the latest changes from a remote repository and automatically merge those changes into your working directory.
+// When you run git pull, Git performs two operations: first, it executes git fetch to download the changes, and then it runs git merge to merge the fetched changes into your current branch.
+
+git fetch origin
+//It downloads the latest changes from the specified remote repository (or the default one if not specified) and updates your local copy of the remote branches. However, your working directory remains unchanged.
