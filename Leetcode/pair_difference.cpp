@@ -34,6 +34,29 @@ public:
     //     }
     //     return ans;
     // }
+    vector<int> Pair_With_Difference(vector<int> &nums, int target){
+        vector<pair<int, int>>arr;
+        vector<int>ans;
+        for(auto i=0; i<nums.size(); i++){
+            arr.push_back({nums[i], i});
+        }
+        sort(arr.begin(), arr.end());
+        int start = 0, end = 1;
+        while(end<nums.size()){
+            if(arr[end].first - arr[start].first == target){
+                ans.push_back(arr[start].second);
+                ans.push_back(arr[end].second);
+                return ans;
+            }
+            else if(arr[end].first - arr[start].first < target){
+                end++; // end aage jaake increase krta hai value ko
+            }
+            else{
+                start++;  // start aage jaake decrease krta hai value ko
+            }
+        }
+        return ans;
+    }
 };
 
 
