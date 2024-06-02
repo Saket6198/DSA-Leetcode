@@ -41,9 +41,13 @@ int main(){
     int size;
     cout<<"Enter the size of the string : ";
     cin>>size;
-    vector<char>arr;
+    vector<char>arr(size);
     cout<<"Enter the characters : ";
     for(auto i=0; i<arr.size(); i++){
         cin>>arr[i];
     }
     sol.reverseString(arr);
+    for(int i=0; i<arr.size(); i++){
+        cout<<arr[i]<<" ";
+    }
+}
