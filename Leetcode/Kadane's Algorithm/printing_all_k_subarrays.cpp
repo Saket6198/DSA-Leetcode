@@ -33,3 +33,6 @@ int main(){
         cout<<" ";
     }
 }
+/* the no of k-sized subarrays of a k-sized array, lets say 1-sized subarray is n, 2-sized subarray is n-1 + n-2 + n-3.....1 
+hence the k-sized subarray of a k-sized array will have exactly 1 k-sized subarray
+*/
