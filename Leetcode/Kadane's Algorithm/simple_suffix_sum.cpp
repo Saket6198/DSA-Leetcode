@@ -1,6 +1,5 @@
 #include<vector>
 #include<iostream>
-
 using namespace std;
 // in suffix, we begin from the end of the array 
 int main(){

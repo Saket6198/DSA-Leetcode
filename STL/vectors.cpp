@@ -88,9 +88,11 @@ for(auto it : a6){
 cout<<endl;
 cout<<binary_search(a6.begin(), a6.end(), 1)<<endl;  //returns 1 if found otherwise returns 0
 
-int lower = lower_bound()
-
-cout<<find(a6.begin(), a6.end(), 1) - a6.begin()<<endl; // used to find the exact index position of an element
+//int lower = lower_bound()
+cout<<"searching";
+cout<<find(a6.begin(), a6.end(), 88) - a6.begin()<<endl<<a6.size()<<endl; // used to find the exact index position of an element
+// If the value is found in the sequence, the iterator to its position is returned.
+// If the value is not found, the iterator to the last position is returned.  
 
 vector<int>a7 = {4, 1,7, 8, 4, 4, 9, 4};
 auto counter = count(a7.begin(), a7.end(), 4); // count returns the no of times a element occured in the vector

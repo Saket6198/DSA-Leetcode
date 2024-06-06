@@ -1,6 +1,5 @@
 #include<vector>
 #include<iostream>
-
 using namespace std;
 // in prefix, we begin from the start of the array 
 int main(){
