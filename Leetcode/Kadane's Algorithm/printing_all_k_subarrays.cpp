@@ -3,7 +3,7 @@
 
 using namespace std;
 
-// A subarray is part of an array having contigious elements. 
+// A subarray is part of an array having contiguous elements. 
 int main(){
     vector<int>arr = {4, 3, 7, 2};
     int j;
