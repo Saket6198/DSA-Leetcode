@@ -1,5 +1,5 @@
 /*
-LARGEST SUM OF CONTIGIOUS ELEMENTS AMONG ALL VARIANTS OF SUBARRAY (In 3 different methods)
+LARGEST SUM OF CONTIGUOUS ELEMENTS AMONG ALL VARIANTS OF SUBARRAY (In 2 different methods)
 
 */
 
@@ -36,7 +36,7 @@ public:
         if(nums.size() < 2)
             return nums[0];
         int m =INT_MIN, i, prefix = 0;
-        for(auto i=0 ;i<nums.size(); i++){
+        for( i=0 ;i<nums.size(); i++){
             prefix += nums[i];
             m = max(m, prefix);
             if(prefix < 0){
