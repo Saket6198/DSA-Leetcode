@@ -100,7 +100,7 @@ public:
 
 */
 
-/*  TWO POINTER APPROACH O(N^2) */
+/*  TWO POINTER APPROACH O(N^2) SC: O(N)*/
 
 class Solution {
 public:
