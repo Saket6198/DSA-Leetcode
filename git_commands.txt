@@ -52,3 +52,11 @@ git pull origin main
 
 git fetch origin
 //It downloads the latest changes from the specified remote repository (or the default one if not specified) and updates your local copy of the remote branches. However, your working directory remains unchanged.
+
+git commit --amend --no-edit
+//used to commit new changes directly without any commit message
+
+git fetch origin
+get checkout -b <new_branch_name> origin/<new_branch_name>
+//fetch command will first update your local copy of the remote branches without modifying your working directory or your local branches.Then 
+//we will create a new local branch and checkout to it and also set it up so that it tracks the newly created remote branch in the remote repo.
