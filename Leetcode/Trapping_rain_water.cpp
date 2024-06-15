@@ -57,6 +57,30 @@ public:
 };
 */
 
+/* TWO POINTER APPROACH TC: O(N), SC: O(1)*/
+/*
+
+class Solution {
+public:
+    int trap(vector<int>& height) {
+        int lm = height[0], rm = height[height.size()-1], sum=0, i=0, j=height.size()-1;
+        while(i < j){
+            if(lm <= rm){
+                sum += lm - height[i];
+                i++;
+                lm = max(lm, height[i]);
+            }else{
+                sum += rm - height[j];
+                j--;
+                rm = max(rm, height[j]);
+            }
+        }
+        return sum;
+    }
+};
+
+*/
+
 /* MORE SPACE OPTIMIZED APPROACH WITHOUT VECTORS */
 
 class Solution {
