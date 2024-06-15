@@ -1,3 +1,9 @@
+# LeetCode & DSA Solutions Repository
+
+![LeetCode & DSA](https://img.shields.io/badge/LeetCode-DSA-orange)
+
+Welcome to my LeetCode and Data Structures & Algorithms (DSA) solutions repository! This repository contains the solutions to various LeetCode problems and DSA exercises that I solve daily. The goal is to improve my problem-solving skills and keep a record of my progress.
+
 ## Languages Used
 
 - **C++**
