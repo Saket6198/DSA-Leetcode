@@ -60,3 +60,4 @@ git fetch origin
 get checkout -b <new_branch_name> origin/<new_branch_name>
 //fetch command will first update your local copy of the remote branches without modifying your working directory or your local branches.Then 
 //we will create a new local branch and checkout to it and also set it up so that it tracks the newly created remote branch in the remote repo.
+// Don't use it for now
