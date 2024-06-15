@@ -27,9 +27,10 @@ n == height.length
 
 #include<iostream>
 #include<vector>
+#include<algorithm>
 
 using namespace std;
-
+/*
 class Solution {
 public:
     int trap(vector<int>& height) {
@@ -52,6 +53,30 @@ public:
                 trapped += min_trap - height[i]; // then we will store the difference between the min height we got and the height of that block itself to determine the trapped water level
         }
         return trapped;
+    }
+};
+*/
+
+/* MORE SPACE OPTIMIZED APPROACH WITHOUT VECTORS */
+
+class Solution {
+public:
+    int trap(vector<int>& height) {
+        if(height.size() <  2)
+            return 0;
+        int lmax = 0, s = 0, rmax= 0;
+        int r = max_element(height.begin(), height.end()) - height.begin();
+        for(auto i=0; i<r; i++){
+            if(lmax - height[i] > 0)
+                s += lmax - height[i];
+            lmax = max(lmax, height[i]);
+        }
+        for(auto i=height.size()-1; i>r; i--){
+            if(rmax - height[i] > 0)
+                s += rmax - height[i];
+            rmax = max(rmax, height[i]);
+        }
+        return s;
     }
 };
 

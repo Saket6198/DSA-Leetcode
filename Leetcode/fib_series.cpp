@@ -58,7 +58,7 @@ public:
         if(n <= 2)
             return 1;
         for(int i=2; i<=n; i++){
-            sum = f +s;
+            sum = f + s;
             f=s;
             s=sum;
         }

@@ -42,11 +42,11 @@ class Solution {
 public:
     int missingNumber(vector<int>& nums) {
         int sum1 = 0, sum2 = 0, miss, n = nums.size();
-        for(int i=0; i<nums.size(); i++){
-            sum1 += nums[i];
+        for(int i=0; i<n; i++){
+            sum1 += nums[i]; // calculate the sum of the nos present in the array 
         }
-        sum2 = (n * (n+1) ) / 2;
-        miss = sum2 - sum1;
+        sum2 = (n * (n+1) ) / 2;    // calculate the total sum of n-sized vector as a sum of n-natural nos using the predefined formula to calculate the summation
+        miss = sum2 - sum1;     // Just simple subtraction between the two will give us the missing number
         return miss;
     }
 };

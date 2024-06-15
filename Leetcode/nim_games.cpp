@@ -54,8 +54,8 @@ class Solution {
 public:
     bool canWinNim(int n) {
         return(n % 4 != 0); //whenever the n is a factor of 4 then the first person to play will never win.
-    }                       // when it is not a 4 factor then we will always choose the number that is a factor of 4 while playing
-                          // eg N = 9 so i start with 1 (making it a factor of 4 by decreasing overall nos by 1, then other lets say plays 234 so you play 5, then they play any no you will always win.)
+    }                       // when it is not a 4 factor then we will always choose the number such that it makes the remaining number a factor of 4 while playing
+                          // eg N = 9 So I will start with [1] (making it a factor of 4 by decreasing overall nos by 1) then the other person, lets say he plays [2 3 4] so you play [5], then they play any no you will always win.)
 };
 
 int main(){

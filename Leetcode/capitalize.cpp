@@ -1,7 +1,7 @@
 // capitalize the input character
 
 
-#include<iostream>ss
+#include<iostream>
 using namespace std;
 
 char capital(char x){

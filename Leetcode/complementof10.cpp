@@ -1,8 +1,5 @@
 // 1009. Complement of Base 10 Integer
-// Easy
-// Topics
-// Companies
-// Hint
+
 // The complement of an integer is the integer you get when you flip all the 0's to 1's and all the 1's to 0's in its binary representation.
 
 // For example, The integer 5 is "101" in binary and its complement is "010" which is the integer 2.
@@ -40,11 +37,11 @@ public:
             return 1;
         int sum=0, rem, mul=1;
         while(n){
-            rem = n % 2;
-            rem ^= 1;
-            n /= 2;
-            sum += rem * mul;
-            mul *= 2;
+            rem = n % 2; // For Bit representation we always divide the number by 2
+            rem ^= 1; // This is an bitwise X-OR operation which flips the bit.
+            n /= 2; // always rounded to smaller value
+            sum += rem * mul; // used to calculate the value of the bit in decimal format from LSB
+            mul *= 2; // increased by 2 to represent the powers of bit in decimal form.
         }
         return sum;
     }

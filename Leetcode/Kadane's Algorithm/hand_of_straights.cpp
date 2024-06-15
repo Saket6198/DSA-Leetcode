@@ -37,7 +37,7 @@ class Solution {
 public:
     bool isNStraightHand(vector<int>& hand, int groupSize) {
         if(hand.size() % groupSize != 0) // automatically return 0 because groups can't be formed if total is not a multiplier of groupSize
-            return false;
+            return 0;
         sort(hand.begin(), hand.end()); // sorting makes it easier to find consecutive elements
         int i, x;
         while(!hand.empty()){  // using a while loop until the hand.empty() function is not 0
@@ -45,13 +45,13 @@ public:
             hand.erase(hand.begin()); 
             for(i=1; i<groupSize; i++){ 
                 x = find(hand.begin(), hand.end(), start + i) - hand.begin(); // finding the next consecutive element directly using find function
-                if(x != hand.size()) // when find does not find the value it returns the size of the hand, hencce used this
+                if(x != hand.size()) // when find does not find the value it returns the size of the hand, hence used this
                     hand.erase(hand.begin() + x); //always use iterators to delete
                 else
-                    return false;
+                    return 0;
             }
         }
-        return true;
+        return 1;
     }
 };
 
