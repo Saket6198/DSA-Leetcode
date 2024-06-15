@@ -4,6 +4,13 @@
 
 Welcome to my LeetCode and Data Structures & Algorithms (DSA) solutions repository! This repository contains the solutions to various LeetCode problems and DSA exercises that I solve daily. The goal is to improve my problem-solving skills and keep a record of my progress.
 
+## Structure
+
+The repository is structured as follows:
+
+![image](https://github.com/Saket6198/DSA-Leetcode/assets/137860573/c4b739a3-4135-49b4-85be-a68fb233ffd3)
+
+
 ## Languages Used
 
 - **C++**
