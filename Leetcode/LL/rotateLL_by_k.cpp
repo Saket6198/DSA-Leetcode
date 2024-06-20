@@ -40,7 +40,44 @@ struct ListNode {
     ListNode(int x) : val(x), next(nullptr) {}
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
+/* USING ARRAYS */
+/*
+class Solution {
+public:
+    ListNode* rotateRight(ListNode* head, int k) {
+        if(head == NULL || head -> next == NULL)
+            return head;
+        vector<int>arr;
+        ListNode *it = head;
+        while(it){
+            arr.push_back(it->val);
+            it = it -> next;
+        }
+        k = k % arr.size();
+        if(k == 0)
+            return head;
+        vector<int>ans(arr.size());
+        for(int j = arr.size() - k; j<arr.size()-1; j++){
+            ans.push_back(arr[j]);
+        }
+        int i=0, c=arr.size()-k-1;
+        while(i != c){
+        ans.push_back(arr[i]);
+        i++;
+        }
+        it = head;
+        i=0;
+        while(it->next != NULL){
+            it -> val = ans[i];
+            it = it -> next;
+            i++;
+        }
+        return head;
+    }
+};
+*/
 
+/* Manipulating LL itself */
 class Solution {
 public:
     ListNode* rotateRight(ListNode* head, int k) {
