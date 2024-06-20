@@ -31,19 +31,51 @@ The number of nodes in the list is in the range [0, 500].
 
 using namespace std;
 
-class Node{
-public:
-    int data;
-    Node *next;
 
-    Node(int value){
-        data = value;
-        next = NULL;
+// Definition for singly-linked list.
+struct ListNode {
+    int val;
+    ListNode *next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
+
+class Solution {
+public:
+    ListNode* rotateRight(ListNode* head, int k) {
+        if(head == NULL || head -> next == NULL)
+            return head;
+        ListNode *it = head, *rot = NULL;
+        int c=0;
+        while(it){
+            c++; // counts the total length of the LL
+            it = it -> next;
+        }
+        k = k % c;      // to always get the iteration count even when the k > length of node(c)
+        if(k % c == 0)      // meaning no rotation
+            return head;
+        int i = c - k;   
+    
+        it = head;
+        while(i-- && it != NULL){
+            rot = it;
+            it = it -> next;
+        }
+        rot -> next = NULL;
+        ListNode *end = it;
+        while(end-> next != NULL){
+            end = end -> next;
+        }
+        end -> next = head;
+        head = it;
+        return head;
     }
 };
 
 int main(){
-    Node *head = NULL, *tail = NULL;
+    Solution sol;
+    ListNode *head = NULL, *tail = NULL;
     int size, k;
     cout<<"Enter the size of the vector : ";
     cin>>size;
@@ -56,43 +88,18 @@ int main(){
     cin>>k;
     for(auto i : arr){
         if(head == NULL){
-            head = new Node(i);
+            head = new ListNode(i);
             tail = head;
         }
         else{
-            tail ->next = new Node(i);
+            tail ->next = new ListNode(i);
             tail = tail -> next;
         }
     }
-    Node *b = head;
-    int z = 1;
-    while(b){
-        cout<<b->data<<"->";
-        b = b-> next;
-        z++;
+    head = sol.rotateRight(head, k);
+    tail = head;
+    while(tail){
+        cout<<tail->val<<"->";
+        tail = tail -> next;
     }
-    cout<<endl<<z;
-
-    // Node *it = head, *start = head;
-    // int c = 0;
-    // while(it){
-    //     it = it -> next;
-    //     c++;
-    // }
-    // int a = (k % c) + 1; // to accomodate when it is greater than list size
-    // it = head;
-    // while(a--){
-    //     // cout<<it->data<<"->";
-    //     it = it -> next;
-    // }
-    // Node *mid = it;
-    // while(it){
-    //     // cout<<endl<<it->data<<"->";
-    //     it = it -> next;
-    // }
-    // it -> next = head -> next;
-    // head = mid -> next;
-    // // it -> next = head;
-    // // head = it;
-
 }
