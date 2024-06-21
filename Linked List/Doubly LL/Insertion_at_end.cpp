@@ -12,6 +12,7 @@ public:
         next = prev = NULL;
     }
 };
+// Inserting at end and also adding array elements into a doubly LL
 
 int main(){
     Node *head = NULL, *tail = NULL;
