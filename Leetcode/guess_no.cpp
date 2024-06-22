@@ -50,6 +50,15 @@ using namespace std;
  * int guess(int num);
  */
 
+// Dummy API
+int guess(int n){
+    if(n ==4)
+        return 0;
+    else if(n > 4)
+        return -1;
+    else return 1;
+}
+
 class Solution {
 public:
     int guessNumber(int n) {
