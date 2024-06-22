@@ -37,6 +37,10 @@ using namespace std;
 
 // The API isBadVersion is defined for you.
 // bool isBadVersion(int version);
+bool isBadVersion(int n){
+    if(n ==4)
+        return true;
+}
 
 class Solution {
 public:
