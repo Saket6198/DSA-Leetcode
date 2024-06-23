@@ -22,6 +22,32 @@ public:
         return ans;
     }
 };
+
+/* Using unordered_map  */
+
+/*
+class Solution {
+public:
+    bool isHappy(int n) {
+        unordered_map<int, bool>seen;
+        int sum =0, rem, no = n;
+        while(n != 1){
+            no = n;
+            while(no){
+                rem = no % 10;
+                sum += rem*rem;
+                no = no / 10;
+            }
+            if(seen[sum] == 1)
+                    return 0;
+            seen[sum] = 1;
+            n =sum;
+            sum = 0;
+        }
+        return 1;
+    }
+};
+*/
 int main(){
     Solution solution; //creating an object of the class Solution in the main function to use the functions inside the solutions class.
     int no;
