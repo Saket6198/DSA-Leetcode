@@ -13,6 +13,29 @@ class Node{
     }
 };
 
+/* for reversing nodes already present using iterative approach*/
+Node *reverseLL(Node *curr, Node *prev){
+    while(curr){
+        Node *ahead = curr -> next;
+        curr -> next = prev;
+        prev = curr;
+        curr = ahead;
+    }
+    return prev;
+    }
+
+/* for reversing nodes already present using recursive approach */
+Node *reverseLL(Node *curr, Node *prev){
+        if(curr == NULL)
+            return prev;
+        Node *ahead = curr -> next;
+        curr -> next = prev;
+        prev = curr;
+        return reverseLL(ahead, prev);
+    }
+
+    
+
 Node* CreateRLL(int arr[], int index, int size, Node *prev){
     if(index == size){
         return prev;
