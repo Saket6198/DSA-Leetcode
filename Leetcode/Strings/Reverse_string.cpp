@@ -26,13 +26,47 @@ s[i] is a printable ascii character.
 #include<iostream>
 #include<vector>
 #include<algorithm>
+#include<stack>
 
 using namespace std;
 
+/* Using reverse STL function */
 class Solution {
 public:
     void reverseString(vector<char>& s) {
         reverse(s.begin(), s.end());
+    }
+};
+
+/* Using Two Pointers */
+class Solution {
+public:
+    void reverseString(vector<char>& s) {
+        if(s.size() == 1)
+            return;
+        int start = 0, end = s.size()-1;
+        while(start <= end){
+            swap(s[start], s[end]);
+            start++;
+            end--;
+        }
+    }
+};  
+
+/* Using Stack */
+class Solution {
+public:
+    void reverseString(vector<char>& s) {
+        stack<char>st;
+        for(auto i : s){
+            st.push(i);
+        }
+        int i=0;
+        while(st.empty() != 1){   // while(!st.empty()) returns 0 while not empty
+            s[i] = st.top();
+            st.pop();    
+            i++;
+        }
     }
 };
 
