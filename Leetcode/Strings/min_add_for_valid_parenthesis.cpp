@@ -60,7 +60,7 @@ public:
     }
 };
 
-/* Without stack SC: O(1) */
+/* Without stack Two Pointer SC: O(1) */
 
 class Solution {
 public:
