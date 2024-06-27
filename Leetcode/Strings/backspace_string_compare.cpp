@@ -38,7 +38,7 @@ Follow up: Can you solve it in O(n) time and O(1) space?
 #include<vector>
 
 using namespace std;
-
+/* Using Stack SC: O(N) */
 // class Solution {
 // public:
 //     bool backspaceCompare(string s, string t) {
@@ -67,51 +67,47 @@ using namespace std;
 //     }
 // };
 
-// int main(){
-//     Solution sol;
-//     string s, t;
-//     cout<<"Enter the string s :";
-//     cin>>s;
-//     cout<<"Enter the string t : ";
-//     cin>>t;
-//     cout<<sol.backspaceCompare(s,t);
-// }
 
-int main(){
-    string s, t;
-    cout<<"enter ";
-    cin>>s;
-    cout<<"enter :";
-    cin>>t;
+
+/* USING STRINGS */
+
+class Solution {
+public:
+    bool backspaceCompare(string s, string t) {
         string a,b;
         if(s.size() == 1)
             a = s;
         else{
             for(int i=0; i<s.size(); i++){
-            if(s[i] == '#')
+            if(s[i] == '#'){
                 if(!a.empty())
                     a.pop_back();
-                else{
-                    cout<<s[i]<<endl;
+            }else
                     a.push_back(s[i]);
-                }
             }
         }
         if(t.size() == 1)
             b = t;
         else{
             for(int i=0; i<t.size(); i++){
-            if(t[i] == '#')
+            if(t[i] == '#'){
                 if(!b.empty())
                     b.pop_back();
-                else{
-                    cout<<t[i]<<endl;
+            }
+                else
                     b.push_back(t[i]);
-                }
             }
         }
-        if(a==b)
-            cout<<"true";
-        else
-            cout<<"false";
+        return (a==b);
     }
+};
+
+int main(){
+    Solution sol;
+    string s, t;
+    cout<<"Enter the string s :";
+    cin>>s;
+    cout<<"Enter the string t : ";
+    cin>>t;
+    cout<<sol.backspaceCompare(s,t);
+}
