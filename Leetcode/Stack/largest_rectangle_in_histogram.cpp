@@ -63,6 +63,43 @@ public:
     }
 };
 
+/* SAME APPROACH BUT SPACE OPTIMIZED */
+
+class Solution {
+public:
+    int largestRectangleArea(vector<int>& heights) {
+        int m = INT_MIN, big,b;
+        stack<int>st;
+        int LSN, RSN;
+        for(int i=0; i<heights.size(); i++){
+            while(!st.empty() && heights[st.top()] > heights[i]){
+                LSN = -1, RSN = heights.size();
+                b = heights[st.top()];
+                st.pop();
+                if(!st.empty()){
+                    LSN = st.top();
+                }
+                RSN = i; 
+                big = b * (RSN - LSN - 1);
+                m = max(m, big);
+            }
+            st.push(i);    
+        }
+        while(!st.empty()){
+            LSN = -1, RSN = heights.size();
+            b = heights[st.top()];
+            st.pop();
+            if(!st.empty()){
+                LSN = st.top();
+            }
+            big = b * (RSN - LSN - 1);
+            m = max(m, big);
+        }
+        return m;
+    }
+};
+
+
 int main(){
     Solution sol;
     int size;
