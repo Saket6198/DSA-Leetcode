@@ -44,7 +44,7 @@ struct ListNode {
 
 class Solution {
 public:
-    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {       // l1 and l2 are the given heads of both the LL resp.
         ListNode *head = new ListNode(0);
         ListNode *i = l1, *it = l2, *itt = head;
         int carry = 0, a=0;
