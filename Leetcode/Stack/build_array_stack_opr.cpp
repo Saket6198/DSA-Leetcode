@@ -62,27 +62,27 @@ using namespace std;
 
 /* Using Stack Operation SC: O(N)*/
 
-class Solution {
-public:
-    vector<string> buildArray(vector<int>& target, int n) {
-        int j = 0;
-        stack<int>st;
-        vector<string>ans;
-        for(int i = 1; i<=n; i++){
-            st.push(i);
-            ans.push_back("Push");
-            if(target[j] != st.top()){
-                st.pop();
-                ans.push_back("Pop");
-            }else if(target[j] == st.top()){
-                if(j == target.size()-1)
-                    return ans;
-                j++;
-            }
-        }
-        return ans;
-    }
-};
+// class Solution {
+// public:
+//     vector<string> buildArray(vector<int>& target, int n) {
+//         int j = 0;
+//         stack<int>st;
+//         vector<string>ans;
+//         for(int i = 1; i<=n; i++){
+//             st.push(i);
+//             ans.push_back("Push");
+//             if(target[j] != st.top()){
+//                 st.pop();
+//                 ans.push_back("Pop");
+//             }else if(target[j] == st.top()){
+//                 if(j == target.size()-1)
+//                     return ans;
+//                 j++;
+//             }
+//         }
+//         return ans;
+//     }
+// };
 
 /* Using Two Pointer */
 class Solution {
