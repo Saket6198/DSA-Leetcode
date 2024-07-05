@@ -21,7 +21,7 @@ bool findArray(int arr[][4], int row, int col, int target){
     return 0;    
 }
 void AddMatrices(int arr1[][], int arr2[][]){
-    int arr
+    int arr;
 }
 
 int main(){
