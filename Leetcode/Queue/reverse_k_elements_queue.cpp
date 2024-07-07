@@ -121,4 +121,5 @@ int main(){
         cout<<arr.front()<<" ";
         arr.pop();
     }
+    
 }
