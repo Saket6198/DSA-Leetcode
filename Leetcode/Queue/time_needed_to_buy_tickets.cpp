@@ -43,25 +43,56 @@ n == tickets.length
 
 using namespace std;
 
+// class Solution {
+// public:
+//     int timeRequiredToBuy(vector<int>& tickets, int k) {
+//         int i, t = 0;
+//         queue<int>q;
+//         for(i =0; i<tickets.size(); i++){
+//             q.push(i);
+//         }
+//         while(tickets[k] != 0){
+//             tickets[q.front()]--;
+//             t++;
+//             if(tickets[q.front()] == 0)
+//                 q.pop();
+//             else{
+//                 q.push(q.front());
+//                 q.pop();
+//             }
+//         }
+//         return t;
+//     }
+// };
+
+/* Without queue SC: O(1) */
+
 class Solution {
 public:
     int timeRequiredToBuy(vector<int>& tickets, int k) {
-        int i, t = 0;
-        queue<int>q;
-        for(i =0; i<tickets.size(); i++){
-            q.push(i);
+        int time = 0, i = 0;
+        for(i = 0; i<tickets.size(); i++){
+            if(i > k)
+                time += min(tickets[k]-1, tickets[i]); // for people in queue behind tickets[k], they can only get at max tickets[k]-1 tickets;
+            else
+                time += min(tickets[k], tickets[i]);    // for people in queue greater than tickets[k], they can at max only get tickets[k] tickets
         }
-        while(tickets[k] != 0){
-            tickets[q.front()]--;
-            t++;
-            if(tickets[q.front()] == 0)
-                q.pop();
-            else{
-                q.push(q.front());
-                q.pop();
-            }
-        }
-        return t;
+        return time;
     }
 };
 
+/*
+eg: k = 2
+    2 3 2 ,time = 2
+    1 2 1 ,time = 4
+    0 1 0 ,time = 6
+
+eg: k = 0
+    5 1 1 1 ,time = 3
+    4 0 0 0 ,time = 4
+    3
+    2
+    1
+    0        ,time = 8 
+
+*/
