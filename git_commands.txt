@@ -25,6 +25,7 @@ git stash pop  (OR) git stash drop  (OR)  git stash clear etc
 git merge <branched-branch-name>
 //used to merge a particular branch back to the master/main/origin branch when you are done with working on new changes.
 //also note that you should review both the branches manually to resolve a particular conflict to ensure that it is correctly merged.
+// switch to main branch then merge it into base branch and use `push -u origin main` to push the changes to the repo
 git merge <branched-branch-name> --squash
 // used to merge multiple commits from a feature branch into a single commit on the main branch, condensing the commit history and //simplifying the Git log. This command is particularly useful when you want to maintain a clean and concise history on the main branch by //combining all the changes from a feature branch into a single commit.
 
