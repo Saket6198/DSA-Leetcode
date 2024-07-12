@@ -52,6 +52,7 @@ nums is sorted in non-decreasing order.
 #include<climits>
 
 using namespace std;
+/* Using previous tracker method */
 
 class Solution {
 public:
@@ -67,6 +68,25 @@ public:
             }
         }
         return nums.size();
+    }
+};
+
+/* Using Two pointer(slow fast approach) More efficient */
+
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        if(nums.size() < 3)
+            return nums.size();
+
+        int slow = 2, fast;     // since first two nos will always be good duplicate
+        for(fast = 2; fast<nums.size(); fast++){
+            if(nums[slow - 2] != nums[fast]){   // we will check if slow - 2 i.e two steps behind fast are the nos equal or not, if not then we will push the present no at slow location and inc slow
+                nums[slow] = nums[fast];
+                slow++;
+            }
+        }
+        return slow;
     }
 };
 
