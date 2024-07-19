@@ -8,7 +8,7 @@ Welcome to my LeetCode and Data Structures & Algorithms (DSA) solutions reposito
 
 The repository is structured as follows:
 
-![image](https://github.com/Saket6198/DSA-Leetcode/assets/137860573/c4b739a3-4135-49b4-85be-a68fb233ffd3)
+![image](https://github.com/user-attachments/assets/67d8a7f7-bc0e-4be7-843b-88f9e0d0653d)
 
 
 ## Languages Used
