@@ -28,22 +28,45 @@ Each element in nums appears exactly three times except for one element which ap
 #include<algorithm>
 
 using namespace std;
+/* Brute Force Solution */
+
+// class Solution {
+// public:
+//     int singleNumber(vector<int>& nums) {
+//         int c;
+//         for(int i=0; i<nums.size(); i++){
+//             c = count(nums.begin(), nums.end(), nums[i]);
+//             if(c==1){
+//                 c = nums[i];  
+//                 break;           
+//             }
+//         }
+//         return c;
+//     }
+// };
+
+/* Using BitWise AND-OR operation */
 
 class Solution {
 public:
     int singleNumber(vector<int>& nums) {
-        int c;
-        for(int i=0; i<nums.size(); i++){
-            c = count(nums.begin(), nums.end(), nums[i]);
-            if(c==1){
-                c = nums[i];  
-                break;           
-            }
+        int ones = 0, twos = 0; // ones store nos appeariing once and twos stores the repeated element
+        for(auto i : nums){
+            ones = (ones ^ i) & ~twos;
+            twos = (twos ^ i) & ~ones;
         }
-        return c;
+        return ones;
     }
 };
 
-/* Using BitWise AND-OR operation */
-
-
+int main(){
+    int size;
+    cout<<"Enter the size of the vector: ";
+    cin>>size;
+    cout<<"Enter the elements of the vector: ";
+    vector<int>nums(size);
+    for(auto &i: nums)
+        cin>>i;
+    Solution sol;
+    cout<<sol.singleNumber(nums);
+}
