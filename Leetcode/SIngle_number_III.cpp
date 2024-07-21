@@ -34,35 +34,51 @@ Each integer in nums will appear twice, only two integers will appear once.
 #include<algorithm>
 using namespace std;
 
-class Solution {
-public:
-    vector<int> singleNumber(vector<int>& nums) {
-        vector<int>ans;
-        int c;
-        for(auto it=0; it<nums.size(); it++){
-            c = count(nums.begin(), nums.end(), nums[it]);
-            if(c == 1)
-                ans.push_back(nums[it]);
-        }
-        return ans;
-    }
-};
+// class Solution {
+// public:
+//     vector<int> singleNumber(vector<int>& nums) {
+//         vector<int>ans;
+//         int c;
+//         for(auto it=0; it<nums.size(); it++){
+//             c = count(nums.begin(), nums.end(), nums[it]);
+//             if(c == 1)
+//                 ans.push_back(nums[it]);
+//         }
+//         return ans;
+//     }
+// };
 
-void Print_array(vector<int>& arr){
-    for(int i=0; i<arr.size(); i++)
-        cout<<arr[i]<<" ";
-}
+// void Print_array(vector<int>& arr){
+//     for(int i=0; i<arr.size(); i++)
+//         cout<<arr[i]<<" ";
+// }
 
 int main(){
-    Solution sol;
-    int n, i;
+    int n;
     cout<<"Enter the size of the array :";
     cin>>n;
-    vector<int>arr(n);
-    vector<int>ans;
+    vector<int>nums(n);
     cout<<"\nEnter the elements of the array : ";
-    for(i=0; i<n; i++)
-        cin>>arr[i];
-    ans = sol.singleNumber(arr);
-    cout<<"["<<ans[0]<<", "<<ans[1]<<"]";
+    for(int i=0; i<n; i++)
+        cin>>nums[i];
+    vector<int>ans(2);
+    int ones = 0;
+    for(auto i : nums){
+        ones = (ones ^ i);
+    }
+    cout<<"1: "<<ones<<endl;
+    ans[0] = ones;
+    auto a = find(nums.begin(), nums.end(), ones) - nums.begin();
+    int first = ones;
+    ones = 0;
+    nums.erase(nums.begin() + a);
+    for(auto i : nums){
+        if(first ^ i == 0)
+            continue;
+        ones = ones ^ i;
+    }
+    ans[1] = ones;
+    for(auto it : ans){
+        cout<<it<<" ";
+    }
 }
