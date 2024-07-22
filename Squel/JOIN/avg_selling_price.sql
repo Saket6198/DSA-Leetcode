@@ -117,12 +117,13 @@ import pandas as pd
 import numpy as np
 
 def average_selling_price(prices: pd.DataFrame, units_sold: pd.DataFrame) -> pd.DataFrame:
-    # Left joining prices and units sold table 
+    /* Left joining prices and units sold table */
     merged_df = prices.merge(units_sold, on = 'product_id', how = 'left')
-    # defining the where clause to get the required data between the dates
+    
+    /* defining the where clause to get the required data between the dates */
     filtered_df = merged_df[(merged_df['purchase_date'].isnull() | merged_df['purchase_date'].between(merged_df['start_date'], merged_df['end_date']))]
     
-    #defining a function which calculates average if total units are != 0
+    /* defining a function which calculates average if total units are != 0 */
     def calculateAvg(group):
         total_units = np.sum(group['units'])
         if(total_units > 0):
@@ -131,7 +132,8 @@ def average_selling_price(prices: pd.DataFrame, units_sold: pd.DataFrame) -> pd.
             average_price = 0
         return pd.Series({'average_price': average_price})
 
-    # renaming the column and getting the output of required columns
+    /* renaming the column and getting the output of required columns */
+
     result_df = filtered_df.groupby('product_id').apply(calculateAvg).reset_index() # Resetting index to make 'product_id' a column again
 
     return result_df
