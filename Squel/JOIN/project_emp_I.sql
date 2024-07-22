@@ -97,4 +97,33 @@ on Project.employee_id = Employee.employee_id
 group by project_id 
 order by project_id asc;
 
-/* */
+/* Using Pandas  1*/
+
+import pandas as pd
+import numpy as np
+def project_employees_i(project: pd.DataFrame, employee: pd.DataFrame) -> pd.DataFrame:
+    merged_df = project.merge(employee, on = 'employee_id', how='left')
+    def calcavg(x):
+        if(np.sum(x['experience_years']) < 0):
+            average = 0
+        else:
+            average = np.round(np.average(x['experience_years']), 2)
+        return pd.Series({'average_years': average})
+    
+    result_df = merged_df.groupby('project_id').apply(calcavg).reset_index()
+    return result_df
+
+/* Using pandas 2 */
+import pandas as pd
+import numpy as np
+def project_employees_i(project: pd.DataFrame, employee: pd.DataFrame) -> pd.DataFrame:
+    merged_df = project.merge(employee, on = 'employee_id', how='left')
+    def calcavg(x):
+        if(np.sum(x['experience_years']) < 0):
+            average = 0
+        else:
+            average = np.round(np.average(x['experience_years']), 2)
+        return average
+    
+    result_df = merged_df.groupby('project_id').apply(calcavg).reset_index(name="average_years")
+    return result_df
