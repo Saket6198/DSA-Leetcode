@@ -80,3 +80,12 @@ import pandas as pd
 def count_unique_subjects(teacher: pd.DataFrame) -> pd.DataFrame:
     final_df = teacher.groupby(by='teacher_id', as_index=False).agg(cnt=('subject_id','nunique'))
     return final_df
+
+/* Different Approach */
+import pandas as pd
+
+def count_unique_subjects(teacher: pd.DataFrame) -> pd.DataFrame:
+    result = teacher.groupby('teacher_id')['subject_id'].nunique().reset_index()
+    result.rename(columns={'subject_id': 'cnt'}, inplace=True)
+    
+    return result 
