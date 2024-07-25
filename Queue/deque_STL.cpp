@@ -14,5 +14,7 @@ int main(){
     cout<<q.front();
     cout<<q.back()<<endl;
     cout<<q.size();
+    q.pop_back();
+    q.pop_front();
 
 }
