@@ -78,3 +78,72 @@ int main(){
     string ans = sol.removeDuplicateLetters(s);
     cout<<ans;
 }
+
+/*
+nitial state:
+Input: "abacb"
+seen = {'a': 2, 'b': 2, 'c': 1}
+stack = []
+set = {}
+Iteration 1 (i = 0):
+Current character: 'a'
+Before processing:
+stack = []
+set = {}
+seen = {'a': 2, 'b': 2, 'c': 1}
+Processing:
+seen['a']-- => seen = {'a': 1, 'b': 2, 'c': 1}
+Since 'a' is not in set and stack is empty, we push 'a' onto stack and add to set:
+stack = ['a']
+set = {'a'}
+Iteration 2 (i = 1):
+Current character: 'b'
+Before processing:
+stack = ['a']
+set = {'a'}
+seen = {'a': 1, 'b': 2, 'c': 1}
+Processing:
+seen['b']-- => seen = {'a': 1, 'b': 1, 'c': 1}
+Since 'b' is not in set and stack top ('a') is less than 'b', we push 'b' onto stack and add to set:
+stack = ['a', 'b']
+set = {'a', 'b'}
+Iteration 3 (i = 2):
+Current character: 'a'
+Before processing:
+stack = ['a', 'b']
+set = {'a', 'b'}
+seen = {'a': 1, 'b': 1, 'c': 1}
+Processing:
+seen['a']-- => seen = {'a': 0, 'b': 1, 'c': 1}
+Since 'a' is already in set, we skip this character.
+No changes to stack and set:
+stack = ['a', 'b']
+set = {'a', 'b'}
+Iteration 4 (i = 3):
+Current character: 'c'
+Before processing:
+stack = ['a', 'b']
+set = {'a', 'b'}
+seen = {'a': 0, 'b': 1, 'c': 1}
+Processing:
+seen['c']-- => seen = {'a': 0, 'b': 1, 'c': 0}
+Since 'c' is not in set and stack top ('b') is less than 'c', we push 'c' onto stack and add to set:
+stack = ['a', 'b', 'c']
+set = {'a', 'b', 'c'}
+Iteration 5 (i = 4):
+Current character: 'b'
+Before processing:
+stack = ['a', 'b', 'c']
+set = {'a', 'b', 'c'}
+seen = {'a': 0, 'b': 1, 'c': 0}
+Processing:
+seen['b']-- => seen = {'a': 0, 'b': 0, 'c': 0}
+Since 'b' is already in set, we skip this character.
+No changes to stack and set:
+stack = ['a', 'b', 'c']
+set = {'a', 'b', 'c'}
+Final state:
+stack = ['a', 'b', 'c']
+Result string: "abc"
+
+*/
