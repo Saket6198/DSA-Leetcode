@@ -42,7 +42,10 @@ public:
         }
         string ret ="";
         for(auto ch :  s){
-            while(!ret.empty() && ret.back() > ch && count[ret.back()-'a'] != 0 && used[ch - 'a']< 1){  // if ret string is not empty and last character in ret is greater than current character(lexicographically element) and also if the element at the back which will be popped will not be the last occurence in the string and lastly if the present element is not already present in the string
+            while(!ret.empty() && ret.back() > ch && count[ret.back()-'a'] != 0 && used[ch - 'a']< 1){  /* if ret string is not empty and 
+last character in ret is greater than current character(lexicographically element) and also if the element
+at the back which will be popped will not be the last occurence in the string and lastly if the present element 
+is not already present in the string */
                 used[ret.back() - 'a'] = 0;     // before popping that character's seen count is reduced to 0
                 ret.pop_back();
             }
