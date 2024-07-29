@@ -12,6 +12,7 @@ int main(){
     q.push(8);
 
     cout<<q.front()<<endl;
-    cout<<q.back()<<endl;
+    int b = q.back();
+    cout<<b;
     cout<<q.size();
 }
