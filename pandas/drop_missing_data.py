@@ -47,8 +47,9 @@ def dropMissingData(students: pd.DataFrame) -> pd.DataFrame:
     final_df = students[students['name'].notna()]
     return final_df
 
-    # or
+    # or using notnull function on columns 
+
     return students[students['name'].notnull()]
-    # or
+    # or using dropna() function
     return students.dropna()
 
