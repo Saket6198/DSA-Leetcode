@@ -41,7 +41,7 @@ using namespace std;
 class Solution {
 public:
     int countDistinctIntegers(vector<int>& nums) {
-        unordered_set<int>seen;
+        unordered_set<int>seen; // using unordered_set to store unique values in constant time
         int rem =0, ans = 0, rev, size= nums.size();
         for(int i=0; i<size; i++){
             seen.insert(nums[i]);
@@ -72,8 +72,9 @@ public:
     }
 
     int reverseint(int no){
-        return no < 10 ? no : ((no % 10) * pow(10, int(log10(no)))) + reverseint(no/10);
-    }
+        return no < 10 ? no : ((no % 10) * pow(10, int(log10(no)))) + reverseint(no/10);    // recursively call stack for reversing no
+    }   // log10(no) gives the position of the integer in the new reversed order, like log10(1234) gives 3 which gives 10 * 3= 1000 which tells us it's position
+
 };
 
 int main(){
