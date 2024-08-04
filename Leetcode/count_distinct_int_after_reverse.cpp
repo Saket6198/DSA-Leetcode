@@ -34,6 +34,7 @@ Constraints:
 #include<iostream>
 #include<vector>
 #include<unordered_set>
+#include<math.h>
 
 using namespace std;
 
@@ -54,6 +55,24 @@ public:
             seen.insert(ans);
         }
         return seen.size();
+    }
+};
+
+/* Using Recursion TC:O(N*Log(num)) Less space efficient due to recursion call stack */
+
+class Solution {
+public:
+    int countDistinctIntegers(vector<int>& nums) {
+        unordered_set<int>seen;
+        for(auto i : nums){
+            seen.insert(i);
+            seen.insert(reverseint(i));
+        }
+        return seen.size();
+    }
+
+    int reverseint(int no){
+        return no < 10 ? no : ((no % 10) * pow(10, int(log10(no)))) + reverseint(no/10);
     }
 };
 
