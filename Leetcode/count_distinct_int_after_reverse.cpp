@@ -40,8 +40,8 @@ using namespace std;
 class Solution {
 public:
     int countDistinctIntegers(vector<int>& nums) {
-        unordered_set<int>seen; // 
-        int rem =0, ans = 0, rev, size = nums.size();
+        unordered_set<int>seen;
+        int rem =0, ans = 0, rev, size= nums.size();
         for(int i=0; i<size; i++){
             seen.insert(nums[i]);
             rev = nums[i];
@@ -52,7 +52,6 @@ public:
                 rev /= 10;
             }
             seen.insert(ans);
-            nums.push_back(ans);
         }
         return seen.size();
     }
