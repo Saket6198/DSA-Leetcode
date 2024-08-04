@@ -7,7 +7,7 @@ Welcome to my LeetCode and Data Structures & Algorithms (DSA) solutions reposito
 ## Structure
 
 The repository is structured as follows:
-
+Enter Leetcode Folder to access all the Leetcode Based Question's Solution
 ![image](https://github.com/user-attachments/assets/19dfb9f0-306c-4d9c-a76b-cb4a3c179826)
 
 
