@@ -1,6 +1,10 @@
-# LeetCode & DSA Solutions Repository
+# LeetCode, GeeksForGeeks, Hackerrank and CodingNinja DSA Solutions Repository
 
 ![LeetCode & DSA](https://img.shields.io/badge/LeetCode-DSA-orange)
+![GeeksforGeeks & DSA](https://img.shields.io/badge/GeeksforGeeks-DSA-green)
+![Hackerrank & DSA](https://img.shields.io/badge/Hackerrank-DSA-blue)
+
+
 
 Welcome to my LeetCode and Data Structures & Algorithms (DSA) solutions repository! This repository contains the solutions to various LeetCode problems and DSA exercises that I solve daily. The goal is to improve my problem-solving skills and keep a record of my progress.
 
@@ -45,6 +49,7 @@ Don't hesitate to connect with me if you have any inquiries or suggestions:
 Email: Feel free to send me an email at saket6198@gmail.com, and I'll be happy to assist.
 
 LeetCode Profile: https://leetcode.com/u/Saket6198/.
+
 Happy Coding! ‍
 
 ---
