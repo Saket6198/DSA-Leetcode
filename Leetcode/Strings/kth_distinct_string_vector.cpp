@@ -48,6 +48,27 @@ arr[i] consists of lowercase English letters.
 using namespace std;
 
 /* LESS SPACE AND TIME EFFICIENT */
+// class Solution {
+// public:
+//     string kthDistinct(vector<string>& arr, int k) {
+//         unordered_map<string, int>seen;
+//         for(auto i : arr){
+//             seen[i]++;
+//         }
+//         vector<string>ans;
+//         for(auto i : arr){
+//             if(seen[i] == 1)
+//                 ans.push_back(i);
+//         }
+//         if(ans.size() < k)
+//             return "";
+//         return ans[k-1];
+//     }
+// };
+
+
+/* Optimized Time and Space */
+
 class Solution {
 public:
     string kthDistinct(vector<string>& arr, int k) {
@@ -55,16 +76,14 @@ public:
         for(auto i : arr){
             seen[i]++;
         }
-        vector<string>ans;
         for(auto i : arr){
-            if(seen[i] == 1)
-                ans.push_back(i);
+            if(seen[i] == 1 && --k == 0)    // only if the first condition evaluates to true will it subtract, so if k = 1 and it finds the first the unique no, k becomes 0 and thus return i
+                return i;
         }
-        if(ans.size() < k)
-            return "";
-        return ans[k-1];
+        return "";  // else return empty string
     }
 };
+
 
 int main(){
     int size, k;
