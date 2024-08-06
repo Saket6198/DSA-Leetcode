@@ -91,3 +91,33 @@ public:
         return push;
     }
 };
+
+/* Using Space optimized approach SC: O(1) */
+
+class Solution {
+public:
+    int minimumPushes(string word) {
+        int seen[26] = {0}; // creates a 26 alphabet spaced array to count freq initialized all to 0
+        for(auto i : word){
+            seen[i - 'a']++;
+        }
+        vector<pair<char, int>>freq;
+        for(int i=0; i<26; ++i){
+            if(seen[i] > 0)
+                freq.push_back({'a' + i,seen[i]});
+        }
+        sort(freq.begin(), freq.end(), [](const pair<char, int>&a, const pair<char, int>&b){
+            if(a.second == b.second)    
+                return a.second < b.second;
+            return a.second > b.second;
+        });
+        int push = 0, count=1;
+        for(int i=0; i<freq.size(); i++){
+            if(i % 8 == 0 && i != 0){
+                count++;
+            }
+            push += count * freq[i].second;
+        }
+        return push;
+    }
+};
