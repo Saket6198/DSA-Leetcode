@@ -169,3 +169,22 @@ int countLeaves(Node* root)
     return(count + countLeaves(root->left) + countLeaves(root->right)); // since we are returning total count of leaf nodes on left and right side of the root hence the addition b/w all three and the counter variable
 }
 
+/* Making another recursive function to handle the counter */
+void total(Node* root, int &count){
+    if(!root)
+        return;
+    if(!root->left && !root->right){
+        count++;
+    }
+    total(root->left, count);
+    total(root->right, count);
+}
+int countLeaves(Node* root)
+{
+    if(!root)
+        return 0;
+    int count = 0;
+    total(root, count);
+    return count;
+    
+}
