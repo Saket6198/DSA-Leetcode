@@ -156,17 +156,16 @@ struct Node
          10
       /      \ 
    20       30 */
+
 int countLeaves(Node* root)
 {
-/* MAIN CODE */
     int count = 0;
     if(!root)
         return 0;
         
-    if(!root->left && !root->right){
+    if(!root->left && !root->right){    // if root->left and root->right doesn't exist we will increase counter by 1
         count++;
     }
-    
-    return(count + countLeaves(root->left) + countLeaves(root->right));
+    return(count + countLeaves(root->left) + countLeaves(root->right)); // since we are returning total count of leaf nodes on left and right side of the root hence the addition b/w all three and the counter variable
 }
 
