@@ -37,6 +37,7 @@ The tree is guaranteed to be complete.
 
 #include<iostream>
 #include<vector>
+#include<queue>
 
 using namespace std;
 
@@ -77,8 +78,30 @@ public:
         if (root == NULL)
             return;
         
-        count++;
+        count++;        // we are only incrementing the counter everytime and not returning anything that is why it is void return type
         total(root->left, count);   // increases count whenever root -> left is not null
-        total(root->right, count);
+        total(root->right, count);  // increases count whenever root -> right is not null
+    }
+};
+
+/* Using Iterative Approach */
+class Solution {
+  public:
+    int getSize(TreeNode* node) {
+        if(!node)
+            return 0;
+        int count = 0;
+        queue<TreeNode*>q;
+        q.push(node);
+        while(!q.empty()){
+            auto temp = q.front();
+            count++;
+            q.pop();
+            if(temp -> left)
+                q.push(temp->left);
+            if(temp -> right)
+                q.push(temp -> right);
+        }
+        return count;
     }
 };
