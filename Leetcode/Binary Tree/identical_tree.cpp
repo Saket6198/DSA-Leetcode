@@ -32,8 +32,8 @@ using namespace std;
 struct TreeNode
 {
     int val;
-    struct Node* left;
-    struct Node* right;
+    struct TreeNode* left;
+    struct TreeNode* right;
 
     TreeNode(int x){
         val = x;
