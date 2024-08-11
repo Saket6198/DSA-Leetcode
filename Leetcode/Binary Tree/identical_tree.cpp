@@ -53,7 +53,7 @@ public:
         if(r1->val != r2->val){
             return 0;
         }
-        return isSameTree(r1->left, r2->left) && isSameTree(r1->right, r2->right);  // return true if both function returns the identical or same return no
+        return (isSameTree(r1->left, r2->left) && isSameTree(r1->right, r2->right));  // return true(AND OPERATOR) if both function returns the identical or same return no
     }
 };
 
