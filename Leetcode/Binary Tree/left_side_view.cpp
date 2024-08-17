@@ -80,3 +80,22 @@ vector<int> leftView(Node *root)
     return ans;
 }
 
+/* Using Recursion */
+void left(Node* root, int level, vector<int>&ans){   // passing level by reference caused undefined behaviour so & not used
+    if(!root)
+        return;
+    if(level == ans.size())     // ans size increases first
+        ans.push_back(root->data);
+    left(root->left, level+1, ans);
+    left(root->right, level+1, ans);
+}
+
+vector<int> leftView(Node *root)
+{
+    if(!root)
+        return {};
+    vector<int>ans;
+    int count = 0;
+    left(root, count, ans);
+    return ans;
+}
