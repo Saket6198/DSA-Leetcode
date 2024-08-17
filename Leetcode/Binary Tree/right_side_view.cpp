@@ -71,3 +71,22 @@ public:
 };
 
 /* Using recursion */
+class Solution {
+public:
+    void right(TreeNode* root, int level, vector<int>&ans){
+        if(!root)
+            return;
+        if(level == ans.size())
+            ans.push_back(root->val);
+        right(root->right, level+1, ans);
+        right(root->left, level+1, ans);
+    }
+    vector<int> rightSideView(TreeNode* root) {
+        if(!root)
+            return {};
+        vector<int>ans;
+        int count = 0;
+        right(root, count, ans);
+        return ans;
+    }
+};
