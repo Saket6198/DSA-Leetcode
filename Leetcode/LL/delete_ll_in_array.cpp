@@ -97,4 +97,44 @@ public:
     }
 };
 
-/*  */
+/* Using Count function O(N) time optimized */
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* modifiedList(vector<int>& nums, ListNode* head) {
+        set<int>s(nums.begin(), nums.end());
+        ListNode *t = head, *prev = NULL, *head2 = NULL, *tt = NULL;
+        while(t != NULL){
+            if(s.count(t->val) == 0){
+                ListNode *temp = t;
+                if(head2 == NULL){
+                    head2 = t;
+                    tt = head2;
+                }else{
+                    tt -> next = t;
+                    tt = tt -> next;
+                }
+                if(prev != NULL)
+                    prev -> next = t -> next;
+                else
+                    head = head -> next;
+            t = t-> next;
+            temp -> next = NULL;
+            }else{
+                prev = t;
+                t = t -> next;
+            }
+        }
+    return head2;
+    }
+};
