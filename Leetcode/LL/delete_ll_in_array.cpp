@@ -54,3 +54,47 @@ The number of nodes in the given list is in the range [1, 105].
 The input is generated such that there is at least one node in the linked list that has a value not present in nums.
 
 */
+#include<bits/stdc++.h>
+
+using namespace std;
+
+struct ListNode {
+    int val;
+    ListNode *next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
+
+/* Using find comparator O(NlogN) */
+class Solution {
+public:
+    ListNode* modifiedList(vector<int>& nums, ListNode* head) {
+        set<int>s(nums.begin(), nums.end());
+        ListNode *t = head, *prev = NULL, *head2 = NULL, *tt = NULL;
+        while(t != NULL){
+            if(find(nums.begin(), nums.end(), t->val) == nums.end()){
+                ListNode *temp = t;
+                if(head2 == NULL){
+                    head2 = t;
+                    tt = head2;
+                }else{
+                    tt -> next = t;
+                    tt = tt -> next;
+                }
+                if(prev != NULL)
+                    prev -> next = t -> next;
+                else
+                    head = head -> next;
+            t = t-> next;
+            temp -> next = NULL;
+            }else{
+                prev = t;
+                t = t -> next;
+            }
+        }
+    return head2;
+    }
+};
+
+/*  */
