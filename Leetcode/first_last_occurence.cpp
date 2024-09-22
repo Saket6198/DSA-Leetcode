@@ -32,8 +32,7 @@ nums is a non-decreasing array.
 -109 <= target <= 109
 */
 
-#include <iostream>
-#include <vector>
+#include<bits/stdc++.h>
 
 using namespace std;
 
@@ -42,11 +41,11 @@ public:
     vector<int> searchRange(vector<int>& nums, int target) {
         // First Occurence
         int n = nums.size();
-        int start = 0, end = n-1, mid, first = -1, last = -1;
+        int start = 0, end = n-1, mid, one = -1, two = -1;
         while(start <= end){
             mid = start + ((end - start) / 2);
             if(target == nums[mid]){
-                first = mid;
+                one = mid;
                 end = mid - 1;  // going behind to check for more occurences of target and get the correct first occurence
             }
             else if(target > nums[mid])
@@ -61,8 +60,8 @@ public:
         while(start <= end){
             mid = start + ((end-start) / 2);
             if(target == nums[mid]){
-                last = mid;
-                start = mid + 1;  //  going ahead to check for more occurences of target and get the correct last occurence
+                two = mid;
+                start = mid + 1;    // going ahead to get the correct last occurence
             }
             else if (target > nums[mid])
                 start = mid + 1;
@@ -70,8 +69,8 @@ public:
                 end = mid - 1;
         } 
         vector<int>arr(2);
-        arr[0] = first;
-        arr[1] = last;
+        arr[0] = one;
+        arr[1] = two;
         return arr;
     }
 };
