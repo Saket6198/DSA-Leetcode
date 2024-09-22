@@ -24,28 +24,28 @@ Constraints:
 0 <= x <= 231 - 1
 
 */
-#include<iostream>
+#include<bits/stdc++.h>
+
 using namespace std;
 
 class Solution {
 public:
     int mySqrt(int x) {
-        int s = 0, e= x, m, ans;
+        int start = 0, end= x, mid, ans;
         if(x < 2)
-            return x;
-        while(s <= e){
-            m = s + ((e - s) / 2);
-            if(x/m == m)
+            return x;   // sq root of 0 and 1 is itself.
+        while(start <= end){
+            mid = start + ((end - start) / 2);
+            if(x/mid == mid)    // x /mid prevents overflow or TL error
                 return m;
-            else if(x / m >m){ // when overflow just transfer variables like a normal equation, here x*x<x becomes x/m > x
-                s = m +1;
-                ans = m;// when square of mid is lesser than x then we store it in a variable since it could be a probable answer too.
-            }
-            else
-                e = m - 1; 
-            }
-            return ans;
+            else if(x / mid > mid){ // when overflow just transfer variables like a normal equation, here x*x<x becomes x/m > x
+                start = mid +1;
+                ans = mid;// when square of mid is lesser than x then we store it in a variable since it could be a probable answer too.
+            }else
+                end = mid - 1; 
         }
+        return ans;
+    }
 };
 
 int main(){
