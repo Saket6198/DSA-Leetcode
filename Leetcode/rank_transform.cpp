@@ -34,3 +34,74 @@ Constraints:
 
 
 */
+
+#include<bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    vector<int> arrayRankTransform(vector<int>& arr) {
+        if(arr.size() < 1)
+            return {};
+        vector<int>ans(arr.size());
+        vector<int>copy(arr.begin(), arr.end());
+        sort(copy.begin(), copy.end(), greater<int>());
+        for(int i = 0; i<arr.size(); i++){
+            int count = 1;
+            for(int j = 0; j <arr.size(); j++){
+                if(arr[i] > copy[j])
+                    count++;
+            }
+            ans[i] = count;
+        }
+        return ans;
+    }
+};
+
+int main(){
+    Solution sol;
+    int size;
+    cout<<"Enter the size of the vector: ";
+    cin>>size;
+    vector<int>arr(size);
+    cout<<"Enter the elements of the vector: ";
+    for(auto &i: arr){
+        cin>>i;
+    }
+    vector<int>ans = sol.arrayRankTransform(arr);
+    for(auto i : ans){
+        cout<<i<<" ";
+    }
+}
+
+/* or */
+
+class Solution {
+public:
+    vector<int> arrayRankTransform(vector<int>& arr) {
+        if (arr.empty()) return {};
+
+        // Step 1: Create a sorted copy of the original array
+        vector<int> copy(arr.begin(), arr.end());
+        sort(copy.begin(), copy.end());
+
+        // Step 2: Create a map of values to ranks
+        unordered_map<int, int> valueToRank;
+        int rank = 1;
+        for (int i = 0; i < copy.size(); ++i) {
+            if (valueToRank.find(copy[i]) == valueToRank.end()) {
+                valueToRank[copy[i]] = rank++;
+            }
+        }
+
+        // Step 3: Assign ranks to the original array using the map
+        vector<int> ans(arr.size());
+        for (int i = 0; i < arr.size(); ++i) {
+            ans[i] = valueToRank[arr[i]];
+        }
+
+        return ans;
+    }
+};
+
+/* using Map */
