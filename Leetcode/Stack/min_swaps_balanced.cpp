@@ -53,3 +53,25 @@ The number of opening brackets '[' equals n / 2, and the number of closing brack
 
 using namespace std;
 
+class Solution {
+public:
+    int minSwaps(string s) {
+        stack<char>st;
+        for(auto i : s){
+            if(i == '[')
+                st.push(i);
+            else
+                if(!st.empty())
+                    st.pop();
+        }
+        return (st.size() + 1) / 2;
+    }
+};
+
+int main(){
+    Solution sol;
+    string s;
+    cout<<"Enter the string (consist of '[' ,']' only): ";
+    cin>>s;
+    cout<<sol.minSwaps(s);
+}
