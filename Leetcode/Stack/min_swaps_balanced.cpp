@@ -53,6 +53,8 @@ The number of opening brackets '[' equals n / 2, and the number of closing brack
 
 using namespace std;
 
+/* Using Stack SC: O(N) */
+
 class Solution {
 public:
     int minSwaps(string s) {
@@ -67,6 +69,24 @@ public:
         return (st.size() + 1) / 2;
     }
 };
+
+/* Using String in-place SC: O(1) */
+
+class Solution {
+public:
+    int minSwaps(string s) {
+        string st;
+        for(auto i : s){
+            if(i == '[')
+                st.push_back(i);
+            else
+                if(!st.empty())
+                    st.pop_back();
+        }
+        return (st.size() + 1) / 2;
+    }
+};
+
 
 int main(){
     Solution sol;
