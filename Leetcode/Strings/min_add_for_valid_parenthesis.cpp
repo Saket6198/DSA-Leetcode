@@ -74,8 +74,7 @@ public:
                     close++;
                 else if(open != 0 && s[i] == ')'){
                 open--;
-                }else
-                    close++;
+            }
         }
         return (open + close);
     }
