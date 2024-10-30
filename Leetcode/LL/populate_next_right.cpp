@@ -64,41 +64,20 @@ public:
 class Solution {
 public:
     Node* connect(Node* root) {
-    
-        if(!root)
-            return root;
-        
-        vector<Node*> temp;
-        queue<Node*>q;
-        q.push(root);
-        q.push(NULL);
-        
-        
-        while(!q.empty())
-        {
-            Node* front=q.front();
-            q.pop();
-            
-            if(front)
-            {
-                cout<<front->val<<" ";
-                temp.push_back(front);
-                if(front->left)
-                    q.push(front->left);
-                if(front->right)
-                    q.push(front->right);
-            }
-            else
-            {
-                for(int i=0;i<temp.size()-1;i++)
-                    temp[i]->next=temp[i+1];
-                
-                temp.clear();
-                if(!q.empty())
-                    q.push(NULL);
+        if(!root) return nullptr;
+        queue<Node*> q;
+        q.push(root);        
+        while(size(q)) {
+            Node* rightNode = nullptr;                    // set rightNode to null initially
+            for(int i = size(q); i; i--) {                // traversing each level
+                auto cur = q.front(); q.pop();            // pop a node from current level and,
+                cur -> next = rightNode;                  // set its next pointer to rightNode
+                rightNode = cur;                          // update rightNode as cur for next iteration
+                if(cur -> right)                          // if a child exists
+                    q.push(cur -> right),                 // IMP: push right first to do right-to-left BFS
+                    q.push(cur -> left);                  // then push left
             }
         }
-        
         return root;
     }
 };
