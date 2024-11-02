@@ -64,13 +64,19 @@ public:
             }
         }
         else{
+            // Iterate over each element of the code array
             for(int i=0; i<code.size(); i++){
-                j = i, it = abs(k);
+                int j = i, it = abs(k), sum = 0;
+                // Iterate over k elements to the left
                 while(it--){
-                    sum += code[abs(--j) % code.size()];
+                    // Decrement j, wrapping around to the end of the array
+                    // if j ever becomes negative
+                    j = (j - 1 + code.size()) % code.size(); 
+                    // Add the element at j to the sum
+                    sum += code[j];
                 }
+                // Set the element of the answer array to the sum
                 ans[i] = sum;
-                sum = 0;
             }
         }
         return ans;
