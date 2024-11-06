@@ -117,3 +117,18 @@ private:
         return bitset<32>(num).count();
     }
 };
+
+int main() {
+    int n;
+    cout<<"enter the size of the vector : ";
+    cin >> n;
+    cout<<"enter the elements of the vector : ";
+    vector<int> nums(n);
+    for (int i = 0; i < n; i++)
+        cin >> nums[i];
+
+    Solution solution;
+    cout << solution.canSortArray(nums) << endl;
+
+    return 0;
+}
