@@ -45,3 +45,75 @@ Constraints:
 #include<bits/stdc++.h>
 using namespace std;
 
+class Solution {
+public:
+//     // int binary(int num){
+//     //     int remainder, ans = 0, pos = 1, set = 0;
+//     //     while(num != 0){
+//     //         remainder = num % 2;
+//     //         if(remainder == 1)
+//     //             set++;
+//     //         ans += remainder * pos;
+//     //         pos *= 10;
+//     //         num /= 2;
+//     //     }
+//     //     return set;
+//     // }
+
+//     int countSet(int num){
+//         int count =0;
+//         while(num){
+//             count += num & 1;
+//             num >>=1;
+//         }
+//         return count;
+//     }
+
+//     bool canSortArray(vector<int>& nums) {
+//         // for(int i=nums.size() - 1; i>0; i--){
+//         //     for(int j=0; j<i; j++){
+//         //         if(nums[j] > nums[j+1]){
+//         //             if(countSet(nums[j]) != countSet(nums[j+1]))
+//         //                 continue;
+//         //             swap(nums[i], nums[i-1]);
+//         //         }
+//         //     }
+//         // }
+//         // return 1;
+// for (int i = 1; i < nums.size(); i++) {
+//         // Check if the previous number is greater and has different set bit count
+//         if (nums[i - 1] > nums[i] && countSet(nums[i - 1]) != countSet(nums[i])) {
+//             return false;
+//         }
+//     }
+//     return true;
+//     }
+    bool canSortArray(vector<int>& nums) {
+        int prevMax = INT_MIN;
+        int currMax = nums[0];
+        int currMin = nums[0];
+        int setBits = countBits(nums[0]);
+
+        for (size_t i = 1; i < nums.size(); i++) {
+            if (setBits == countBits(nums[i])) {
+                currMax = max(currMax, nums[i]);
+                currMin = min(currMin, nums[i]);
+            } else {
+                if (currMin < prevMax)
+                    return false;
+
+                prevMax = currMax;
+                setBits = countBits(nums[i]);
+                currMin = nums[i];
+                currMax = nums[i];
+            }
+        }
+
+        return currMin > prevMax;
+    }
+
+private:
+    int countBits(int num) {
+        return bitset<32>(num).count();
+    }
+};
