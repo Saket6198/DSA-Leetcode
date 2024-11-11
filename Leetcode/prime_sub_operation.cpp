@@ -42,3 +42,60 @@ Constraints:
 1 <= nums[i] <= 1000
 nums.length == n
 */
+
+/* Inefficient O(N) linear sieve algo */
+
+#include<bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    void sieve(vector<bool>&primes, int n){
+        primes[0] = primes[1] = 0;
+        for(int i=2; i*i<n; i++){
+            for(int j = 2*i; j<n; j+= i){
+                primes[j] = 0;
+            }
+        }
+
+    }    
+    bool primeSubOperation(vector<int>& nums) {
+        // if(is_sorted(nums.begin(), nums.end()))
+        //     return 1;
+        int n = nums.size();
+        vector<bool>is_prime(1005, 1);
+        sieve(is_prime, 1005);
+        vector<int>prime(1005);
+        for(int i=0; i<1005; i++){
+            if(is_prime[i]) prime.push_back(i);
+        }
+        bool possible = 0;
+        int prev = nums[n - 1];
+        for(int i=n-2; i>=0; i--){
+            if(nums[i] < prev){prev = nums[i]; continue;}
+            possible = 1;
+            for(int k = 0; k<prime.size() && prime[k] < nums[i]; k++){
+                if(nums[i] - prime[k] < prev){
+                    prev = nums[i] - prime[k];
+                    possible = 0;
+                    break;
+                }
+            }
+            if(possible) break;
+        }
+        return !possible;
+    }
+};
+
+int main(){
+    cout << "Enter the size of the array: ";
+    int n;
+    cin >> n;
+    vector<int>nums(n);
+    cout << "Enter the elements of the array: ";
+    for(int i=0; i<n; i++) cin >> nums[i];
+
+    Solution s;
+    cout << (s.primeSubOperation(nums) ? "Yes" : "No") << endl;
+    return 0;
+}
