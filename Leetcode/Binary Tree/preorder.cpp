@@ -82,7 +82,8 @@ public:
             auto temp = st.top();
             st.pop();
             ans.push_back(temp->val);
-            if(temp->right)
+            if(temp->right)     // first right then pushing left because stack is
+            // LIFO so left will be on top according to preorder traversal
                 st.push(temp->right);
             if(temp->left)
                 st.push(temp->left);
@@ -90,3 +91,8 @@ public:
         return ans;
     }
 };
+
+int main(){
+    TreeNode* root = new TreeNode();
+    return 0;
+}
