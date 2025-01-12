@@ -10,6 +10,41 @@
  * @param {TreeNode} root
  * @return {number[]}
  */
+
+
+/* using iterative approach */
+
+var inorderTraversal = function(root) {
+    if(!root)
+        return [];
+    let stack = [root];
+    let visited = [];
+    let ans = [];
+    stack.push(root);
+    visited.push(0);
+    while(stack.length > 0){
+        let temp = stack.pop();
+        let flag = visited.pop();
+        if(!flag){
+            if(temp.right){
+                stack.push(temp.right);
+                visited.push(0);
+            }
+            stack.push(temp);
+            visited.push(1);
+            if(temp.left){
+                stack.push(temp.left);
+                visited.push(0);
+            }
+        }else
+            ans.push(temp.val);
+            // visited.pop();
+    }
+    return ans;
+};
+
+
+
 var inorderTraversal = function(root) {
     function inorder(root, ans){
         if(!root)
