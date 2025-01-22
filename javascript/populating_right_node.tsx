@@ -44,39 +44,35 @@ The recursive approach is fine. You may assume implicit stack space does not cou
 
 
 
-// * Definition for _Node.
-class _Node {
-    val: number
-    left: _Node | null
-    right: _Node | null
-    next: _Node | null
-    constructor(val?: number, left?: _Node, right?: _Node, next?: _Node) {
-        this.val = (val===undefined ? 0 : val)
-        this.left = (left===undefined ? null : left)
-        this.right = (right===undefined ? null : right)
-        this.next = (next===undefined ? null : next)
+// Definition for Node.
+class Node {
+    val: number;
+    left: Node | null;
+    right: Node | null;
+    next: Node | null;
+
+    constructor(val?: number, left?: Node, right?: Node, next?: Node) {
+        this.val = val === undefined ? 0 : val;
+        this.left = left === undefined ? null : left;
+        this.right = right === undefined ? null : right;
+        this.next = next === undefined ? null : next;
     }
 }
 
-function connect(root: _Node | null): _Node | null {
-    if(!root)
-        return null;
-    const q: _Node[] = [];
+function connect(root: Node | null): Node | null {
+    if (!root) return null;
+    const q: Node[] = [];
     q.push(root);
-    while(q.length > 0){
-        let rightNode: _Node | null = null;
-        const levelsize = q.length;
-
-        for(let i = 0; i<levelsize; i++){
+    while (q.length > 0) {
+        let rightNode: Node | null = null;
+        const levelSize = q.length;
+        for (let i = 0; i < levelSize; i++) {
             const curr = q.shift()!;
             curr.next = rightNode;
             rightNode = curr;
-            if(curr.right && curr.left){ // since it is a perfect Binary tree so if right exist then left too will.
-                q.push(curr.right);
-                q.push(curr.left);
-            }
+            if (curr.right) q.push(curr.right);
+            if (curr.left) q.push(curr.left);
         }
     }
     return root;
-};
-
+}
