@@ -67,4 +67,37 @@ function cycleLengthQueries(n: number, queries: number[][]): number[] {
     }
     return q;
 };
+function main() {
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
+
+    rl.question('Enter the value of n: ', (nInput: string) => {
+        const n = parseInt(nInput);
+        rl.question('Enter the number of queries: ', (mInput: string) => {
+            const m = parseInt(mInput);
+            const queries: number[][] = [];
+
+            const askQuery = (index: number) => {
+                if (index === m) {
+                    const result = cycleLengthQueries(n, queries);
+                    console.log('Output:', result);
+                    rl.close();
+                    return;
+                }
+
+                rl.question(`Enter query ${index + 1} (format: ai bi): `, (queryInput: string) => {
+                    const [ai, bi] = queryInput.split(' ').map(Number);
+                    queries.push([ai, bi]);
+                    askQuery(index + 1);
+                });
+            };
+
+            askQuery(0);
+        });
+    });
+}
+
+main();
 
