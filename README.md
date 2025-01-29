@@ -22,6 +22,10 @@ The repository is structured as follows:
 - **C++**
 - **C**
 - **Java**
+- **JavaScript**
+- **TypeScript**
+- **Rust**
+- **Python**
 
 
 ## Collaboration Encouraged:
