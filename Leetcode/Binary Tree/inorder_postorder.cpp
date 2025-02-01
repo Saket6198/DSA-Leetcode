@@ -68,7 +68,30 @@ public:
         return build(inorder, postorder, 0, postorder.size()-1,postorder.size()-1);
     }
 };
+// using hashmap TC: O(N) SC: O(N)
 
+class Solution {
+public:
+    void map_build(unordered_map<int, int>&order, vector<int>&in){
+        for(int i=0; i<in.size(); i++)
+            order[in[i]] = i; 
+    }
+    TreeNode* build(int start, int end, vector<int>&post, unordered_map<int, int>&order, int &idx){
+        if(start > end)
+            return nullptr;
+        TreeNode *root = new TreeNode(post[idx]);
+        int loc = order[post[idx--]];
+        root -> right = build(loc + 1, end, post, order, idx);
+        root -> left = build(start, loc-1, post, order, idx);
+        return root;
+    }
+    TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
+        unordered_map<int, int>order(postorder.size());
+        map_build(order ,inorder);
+        int idx = postorder.size() - 1;
+        return build(0, postorder.size() - 1, postorder, order, idx);
+    }
+};
 
 
 int main(){
