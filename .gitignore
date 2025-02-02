@@ -60,7 +60,6 @@ __pycache__/
 *.jar
 *.war
 *.ear
-*.exe
 *.dll
 *.so
 *.dylib
