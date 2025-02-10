@@ -19,7 +19,7 @@ class NumberContainers {
         
         int find(int number) {
             if(no.count(number) != 0 && !no[number].empty())    // we will check if the number is present in the map_set and also check if its empty or not(imp since erase will give count 0 but should actually return -1)
-                return *no[number].begin(); // else return the first element of the set
+                return *no[number].begin(); // else return the 
             return -1;
         }
     };
