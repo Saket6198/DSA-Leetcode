@@ -58,9 +58,9 @@ public:
         if(Instart > Inend)
             return NULL;
         TreeNode* root = new TreeNode(post[idx]);
-        int position = find(in, post[idx], Instart, Inend);
-        root->right = build(in, post, position+1, Inend,idx - 1);
-        root->left = build(in, post, Instart, position-1, idx - (Inend - position) - 1);
+        int position = find(in, post[idx], Instart, Inend); // find the position of the root
+        root->right = build(in, post, position+1, Inend,idx - 1);   // build the right subtree from the middle + 1 to the end
+        root->left = build(in, post, Instart, position-1, idx - (Inend - position) - 1); // build the left subtree from the start to the middle -1
         return root;
     }
     
