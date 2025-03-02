@@ -37,6 +37,14 @@ Follow up: Could you do it in one pass?
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+struct ListNode {
+    int val;
+    ListNode *next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
+
 class Solution {
 public:
     ListNode* reverseBetween(ListNode* head, int left, int right) {
@@ -55,7 +63,7 @@ public:
         ListNode *curr = prev->next;
         ListNode *next = nullptr;
         
-        for (int i = 0; i < right - left; i++) {
+        for (int i = 0; i < right - left + 1; i++) {
             next = curr->next;
             curr->next = next->next;
             next->next = prev->next;
