@@ -73,6 +73,33 @@ class Solution {
         }
     };
 
+/* Better way using maps O(450*3) all combination*/
+
+class Solution {
+    public:
+        vector<int> findEvenNumbers(vector<int>& digits) {
+            unordered_map<int, int>seen;
+            vector<int>ans;
+            for(auto i : digits)
+                seen[i]++;
+            for(int i=100; i<1000; i+= 2){
+                int a=i/100, b = (i /10) % 10, c = i % 10;
+                unordered_map<int, int>cpy = seen;
+                if(--cpy[a] <0) // better than .count(), as if it is not present it is auto set to 0 so anything less than 0 would anyway be not present
+                    continue;
+                if(--cpy[b] <0)
+                    continue;
+                if(--cpy[c] <0)
+                    continue;
+                ans.push_back(i);
+            }
+            return ans;
+        }
+    };
+
+
+
+
     int main() {
         Solution s;
         int n;
