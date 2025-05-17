@@ -84,30 +84,40 @@ path is a valid absolute Unix path.
 using namespace std;    
 
 /* My approach, same TC but less tidy and more dirty TC: O(N) SC:O(N) */
-
+//  NOTE: this is not totally correct 
 class Solution {
 public:
     string simplifyPath(string path) {
-        int n =path.size();
         deque<string>st;
-        for(int i=0; i<n; i++){
-            while(i < n && path[i] == '/')
-                i++;
-            string word = "";
-            while(i < n && path[i] != '/'){
-                word += path[i++];
-            } 
-            if(word == ".")
-                continue;
-            else if(word == ".."){
-                if(!st.empty()) st.pop_back();
-            }else
+        for(int i=0; i<path.size(); i++){
+            if(path[i] == '.'){
+                string dir = "";
+                while(path[i] == '.'){
+                    dir += path[i++];
+                }
+                if(dir.size() == 2){
+                    if(!st.empty())
+                        st.pop_back();
+                }else if(dir.size() > 2){
+                    st.push_back(dir);
+                }
+            }else if((path[i] >= 'A' && path[i] <= 'Z') || (path[i] >= 'a' && path[i] <= 'z')){
+                string word = "";
+                while(isalpha(path[i])){
+                    word += path[i++];
+                }
                 st.push_back(word);
+            }
         }
-        string ans = "/";
+        string ans="/";
+        if(st.size() == 1){
+            ans += st.front();
+            return ans;
+        }
         while(!st.empty()){
             ans += st.front();
-            if(st.size() > 1) ans += "/";
+            if(st.size() > 1)
+                ans += "/";
             st.pop_front();
         }
         return ans;
