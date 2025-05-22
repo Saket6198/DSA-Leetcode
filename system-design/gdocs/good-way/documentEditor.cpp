@@ -173,3 +173,14 @@ int main() {
 
     return 0;
 }
+
+/* Single Responsibility Principle is being followed as each of the classes have seperate individual non-conflicting responsibility */
+/* Open/Closed Principle is being followed as the Document class can be extended with new types of elements without modifying existing code. 
+   The DocumentEditor class can also be extended to support different storage mechanisms without changing the core logic of document editing. */
+/* Liskov Substitution Principle is being followed as the DocumentElement class can be replaced with any of its subclasses without affecting the behavior of the Document class.
+   The DocumentEditor class can also be replaced with any of its subclasses without affecting the behavior of the client code. */
+
+/* Interface Segregation Principle is being followed as all the classes only implement the methods that are relevant to them, nothing unnecessary. */
+/* Dependency Inversion Principle is being followed as the DocumentEditor class depends on the abstraction of Persistence rather than a concrete implementation. 
+   This allows for flexibility in changing the storage mechanism without affecting the DocumentEditor class. */
+   
