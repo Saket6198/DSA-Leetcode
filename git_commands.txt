@@ -69,3 +69,7 @@ git log --find-renames --follow -- <file>
 
 git pull --rebase
 // fetches latest changes from the main working directory and merges it to your current working directory(while still keeping your changes) without creating a seperate merge branch.
+
+git reset --soft HEAD~1
+moves the current branch pointer (HEAD) back by one commit,
+effectively undoing the last commit but keeping all changes from that commit staged in the index,
