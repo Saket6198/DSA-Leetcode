@@ -55,10 +55,44 @@ public:
             return root;
         TreeNode* left = lowestCommonAncestor(root->left, p, q);
         TreeNode* right = lowestCommonAncestor(root->right, p, q);
-        if (left && right) return root;
-        return left ? left : right;
+        if (left && right) return root; // if both are found in left and right subtrees, then root is LCA
+        return left ? left : right; // if one of them is found only, then that is LCA
     }
 };
+
+/* Iterative Approach */
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+
+class Solution {
+public:
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        while(root){
+            if(p->val < root->val && q->val < root->val){
+                root = root->left;
+            }else if(p->val > root->val && q->val > root->val){
+                root = root -> right;
+            }else
+                return root;
+        }
+        return NULL;
+    }
+};
+/*  If p and q are on different sides of current root → current root is LCA
+
+If one equals the root, it's the LCA
+
+If both are smaller or both are larger, keep traversing in that direction
+such is the property of BST
+
+*/
 
 int main(){
     int size;
@@ -80,8 +114,8 @@ int main(){
             if (tree[i] < temp->val){
                 if (temp->left) {
                     temp = temp->left;
-            }else
-                temp->left = new TreeNode(tree[i]);
+                }else
+                    temp->left = new TreeNode(tree[i]);
             break;
             }else{
                 if(temp->right){
