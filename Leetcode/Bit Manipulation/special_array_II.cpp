@@ -47,6 +47,10 @@ queries[i].length == 2
 */
 
 /* Brute force method */
+
+#include <bits/stdc++.h>
+using namespace std;
+
 class Solution {
 public:
     vector<bool> isArraySpecial(vector<int>& nums, vector<vector<int>>& queries) {
@@ -66,3 +70,5 @@ public:
         return output;
     }
 };
+
+/* Optimized Method */
