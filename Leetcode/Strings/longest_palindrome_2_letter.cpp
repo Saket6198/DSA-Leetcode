@@ -63,7 +63,9 @@ public:
         int cnt = 0;
         bool hasOddPalindrome = false;
 
-        for(auto& [word, count] : freq){
+        for(auto it = freq.begin(); it != freq.end(); ++it){
+            string word = it->first;
+            int count = it->second;
             if(count == 0) continue;
 
             if(ispalindrome(word)) {
