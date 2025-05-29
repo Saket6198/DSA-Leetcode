@@ -71,4 +71,23 @@ public:
     }
 };
 
-/* Optimized Method */
+/* Optimized Method prefix sum TC: O(N) */
+class Solution {
+public:
+    vector<bool> isArraySpecial(vector<int>& nums, vector<vector<int>>& queries) {
+        vector<bool>ans;
+        int j = 0;
+        vector<int>converted(1, 0);
+        for(auto i=0; i<nums.size()-1; i++){
+            if((nums[i]&1) == (nums[i+1]&1)) j++;   // if both numbers are of same parity, increment j
+            converted.push_back(j);
+        }
+        for(auto q : queries){  // if both converted indices are equal, then the subarray is special
+            if(converted[q[0]] == converted[q[1]])
+                ans.push_back(1);
+            else
+                ans.push_back(0);
+        }
+        return ans;
+    }
+};
