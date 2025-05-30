@@ -61,6 +61,30 @@ public:
     }
 };
 
+/* Optimized using freq array map to reduce collision and other such overheads */
+class Solution {
+public:
+    int countConsistentStrings(string allowed, vector<string>& words) {
+        int freq[26] = {};
+        for(auto i : allowed){
+            freq[i-'a'] = 1;
+        }
+        int cnt = 0;
+        for(int i=0; i<words.size(); i++){
+            bool allowed = 1;
+            for(int j=0; j<words[i].size(); j++){
+                if(freq[words[i][j] - 'a'] != 1){
+                    allowed = 0;
+                    break;
+                }
+            }
+            if(allowed)
+                cnt++;
+        }
+        return cnt;
+    }
+};
+
 int main(){
     Solution sol;
     string allowed;
