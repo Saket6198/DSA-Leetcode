@@ -85,6 +85,29 @@ public:
     }
 };
 
+/* More optimized using Bitwise OR and Bitwise left shift to create a int mask of 26 character switches */
+class Solution {
+public:
+    int countConsistentStrings(string allowed, vector<string>& words) {
+        int mask = 0;
+        for(char c :  allowed){
+            int bit_position = c - 'a';
+            mask |= 1<<bit_position;
+        }
+        int cnt =0;
+        for(int i=0; i<words.size(); i++){
+            int temp= 0 ;
+            for(int j=0; j<words[i].size(); j++){
+                temp |= (1 << (words[i][j] - 'a'));
+            }
+            if((temp | mask) == mask)
+                cnt++;
+        }
+        return cnt;
+    }
+};
+
+
 int main(){
     Solution sol;
     string allowed;
