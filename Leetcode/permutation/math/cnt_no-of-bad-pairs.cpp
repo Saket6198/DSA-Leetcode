@@ -49,6 +49,20 @@ class Solution {
             return (n*(n-1))/2 - cnt;
         }
     };
+    /* You are given an array nums. A pair (i, j) is called a bad pair if:
+
+j > i AND j - i != nums[j] - nums[i]
+In other words, a good pair satisfies:
+
+j - i == nums[j] - nums[i]
+
+Let’s rearrange this:
+
+j - nums[j] = i - nums[i]
+so we find the good pairs first that is i- nums[i]
+and then subtract the good pairs from total pairs to get bad pairs
+
+*/
 
     int main(){
         Solution sol;
