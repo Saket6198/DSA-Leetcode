@@ -107,7 +107,7 @@ from EmployeeUNI
 RIGHT JOIN  Employees 
 ON Employees.id = EmployeeUNI.id;
 
-/* Using Left Join */
+/* Using Left Join */   
 select unique_id, name
 from Employees
 left join EmployeeUNI
@@ -120,7 +120,7 @@ from Employees
 Left join EmployeeUNI 
 Using(id);
 
-/* Using Alias Names */
+/* Using Alias Names(best method) */
 
 select e2.unique_id, e1.name
 from Employees as e1
