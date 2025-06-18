@@ -88,6 +88,13 @@ Machine 1's average time is ((1.550 - 0.550) + (1.420 - 0.430)) / 2 = 0.995
 Machine 2's average time is ((4.512 - 4.100) + (5.000 - 2.500)) / 2 = 1.456
 
 */
+/* using self join */
+select a.machine_id, ROUND(AVG(b.timestamp - a.timestamp), 3) as processing_time
+from Activity as a
+join Activity as b
+using(machine_id)
+where a.activity_type = 'start' and b.activity_type = 'end'
+group by a.machine_id;
 
 /* Using Subqueries using subsequent machine and process id */
 select machine_id,
