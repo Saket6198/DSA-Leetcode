@@ -45,39 +45,39 @@ struct TreeNode {
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-class Solution {
-public:
-    vector<int> inorderTraversal(TreeNode* root) {
-        if(!root)
-            return {};
-        vector<int>ans;
-        stack<TreeNode*>s1;
-        stack<bool>visited;
-        s1.push(root);
-        visited.push(0);
-        while(!s1.empty()){
-            TreeNode* temp = s1.top();
-            s1.pop();
-            bool flag = visited.top();
-            visited.pop();
-            if(!flag){
-                if(temp->right){
-                    s1.push(temp->right);
-                    visited.push(0);
+    class Solution {
+    public:
+        vector<int> inorderTraversal(TreeNode* root) {
+            if(!root)
+                return {};
+            vector<int>ans;
+            stack<TreeNode*>s1;
+            stack<bool>visited; // to check if node is visited twice or not
+            s1.push(root);
+            visited.push(0);    // 0 means not visited, for first element
+            while(!s1.empty()){
+                TreeNode* temp = s1.top();
+                s1.pop();
+                bool flag = visited.top();
+                visited.pop();
+                if(!flag){  // if not visited
+                    if(temp->right){ // if right child exists and not visited 
+                        s1.push(temp->right);
+                        visited.push(0);
+                    }
+                    s1.push(temp);  // push the root child now as it has been visited one time so 1 is pushed
+                    visited.push(1);
+                    if(temp->left){ // if left child exists and not visited
+                        s1.push(temp->left);
+                        visited.push(0);    //visited first time so 0 is pushed
+                    }
+                }else{
+                    ans.push_back(temp->val);  // if visited twice then push the value in ans   
                 }
-                s1.push(temp);
-                visited.push(1);
-                if(temp->left){
-                    s1.push(temp->left);
-                    visited.push(0);
-                }
-            }else{
-                ans.push_back(temp->val);
             }
+            return ans;
         }
-        return ans;
-    }
-};
+    };
 
 /* Using Recursion */
 

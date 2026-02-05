@@ -31,6 +31,7 @@ nums[i] is either 0, 1, or 2.
 #include<algorithm>
 
 using namespace std;
+/* brute force my approach */
 
 class Solution {
 public:
@@ -53,6 +54,25 @@ public:
                 nums[i] = 2;
             }
             }
+};
+
+/* Optimized using freq tables: */
+
+class Solution {
+public:
+    void sortColors(vector<int>& nums) {
+        int freq[3] = {};
+        for(auto i : nums){
+            freq[i]++;
+        }
+        int i=0;
+        for(int j=0; j<3; j++){
+            while(freq[j]-- != 0){
+                nums[i++] = j;
+            }
+        }
+        return;
+    }
 };
 
 void Print_array(vector<int>& nums, int n){

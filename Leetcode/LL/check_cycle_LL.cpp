@@ -39,9 +39,7 @@ pos is -1 or a valid index in the linked-list.
 Follow up: Can you solve it using O(1) (i.e. constant) memory?
 */
 
-#include<iostream>
-#include<vector>
-
+#include<bits/stdc++.h>
 using namespace std;
 
 /* Iterative Approach (inefficient but functional)*/
@@ -52,7 +50,7 @@ using namespace std;
       ListNode(int x) : val(x), next(nullptr) {}
       ListNode(int x, ListNode *next) : val(x), next(next) {}
   };
-/*  
+/*  O(N^2) SC: O(N)
 class Solution {
 public:
     bool check(vector<ListNode*>& nums, ListNode *it){
@@ -79,7 +77,7 @@ public:
 };
 */
 
-/* USING UNORDERED_MAP */
+/* USING UNORDERED_MAP  TC: O(N) SC: O(N)*/
 
 /*
 class Solution {
@@ -117,3 +115,23 @@ public:
         return 0;
     }
 };
+
+int main(){
+    Solution s;
+    int size;
+    cout<<"Enter size: ";
+    cin>>size;
+    vector<int>arr(size);
+    cout<<"Enter the elements of the vector: ";
+    for(auto &i : arr){
+        cin>>i;
+    }
+    ListNode *head = new ListNode(arr[0]);
+    ListNode *it = head;
+    for(int i = 1; i<arr.size(); i++){
+        ListNode *temp = new ListNode(arr[i]);
+        it -> next = temp;
+        it = it -> next;
+    }
+    cout << "is cycle present: " << s.hasCycle(head);
+}
